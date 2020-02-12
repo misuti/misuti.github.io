@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yun's Homepage</title>
+    <link rel='icon' href='cloud.png' type='image/png' />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <link href="theme.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
@@ -25,15 +26,24 @@
         </div>
     </header>
     <div id="contents">
-        <h4 class="mdc-typography--headline4">Well there isn't anything here at the moment.</h4>
-        <button class="foo-button mdc-button mdc-button--outlined" data-mdc-auto-init="MDCRipple">
+        <p class="mdc-typography--body1">Well there isn't anything here at the moment.</p>
+        <button class="foo-button mdc-button mdc-button--outlined" data-mdc-auto-init="MDCRipple" onclick="onClick()">
             <span class="mdc-button__ripple"></span>
             <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
-            Love
+            <span id="love">Love</span>
         </button>
     </div>
     <script charset="utf-8">
         mdc.autoInit();
+
+        function onClick() {
+            if (window.localStorage.counter) window.localStorage.counter++;
+            else window.localStorage.counter = 1;
+            document.getElementById("love").innerHTML = "Love &times;" + window.localStorage.counter;
+        }
+        if (window.localStorage.counter) {
+            document.getElementById("love").innerHTML = "Love &times;" + window.localStorage.counter;
+        }
     </script>
 </body>
 
