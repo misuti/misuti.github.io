@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yun's Homepage</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="theme.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <header class="mdc-top-app-bar mdc-top-app-bar--short">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded">menu</button>
+                <span class="mdc-top-app-bar__title">雲 Yun</span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple"><span class="mdc-button__ripple"></span>Projects</button>
+                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple"><span class="mdc-button__ripple"></span>Random Things</button>
+            </section>
+        </div>
+    </header>
+    <div id="contents">
+        <h4 class="mdc-typography--headline4">Well there isn't anything here at the moment.</h4>
+        <button class="foo-button mdc-button mdc-button--outlined" data-mdc-auto-init="MDCRipple">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+            Love
+        </button>
+    </div>
+    <script charset="utf-8">
+        mdc.autoInit();
+    </script>
+</body>
+
+</html>
