@@ -5,3 +5,26 @@ body {
 #main-content {
     padding: 0 20px;
 }
+
+.mdc-drawer {
+    background-color: var(--mdc-theme-surface);
+}
+
+.mdc-drawer .mdc-list-item,
+.mdc-drawer .mdc-list-item__graphic {
+    color: var(--mdc-theme-on-surface);
+}
+
+.mdc-drawer .mdc-list-item--activated,
+.mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
+    color: var(--mdc-theme-primary);
+}
+
+body {
+    background-color: var(--mdc-theme-background);
+    color: var(--mdc-theme-on-surface);
+}
+
+.mdc-top-app-bar {
+    background-color: var(--mdc-theme-secondary);
+}
