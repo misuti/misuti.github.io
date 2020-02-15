@@ -11,31 +11,64 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="colors.dark.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
 </head>
 
 <body>
-    <header class="mdc-top-app-bar mdc-top-app-bar--short">
+    <header class="mdc-top-app-bar app-bar" id="app-bar">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <button class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon--unbounded">menu</button>
+                <button class="mdc-button demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</button>
                 <span class="mdc-top-app-bar__title">云 Yun</span>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple"><span class="mdc-button__ripple"></span>Projects</button>
-                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple"><span class="mdc-button__ripple"></span>Random Things</button>
+                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple">
+                    <span class="mdc-button__ripple"></span>Projects
+                </button>
+                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple">
+                    <span class="mdc-button__ripple"></span>Random Things
+                </button>
             </section>
         </div>
     </header>
-    <div id="contents">
-        <p class="mdc-typography--body1">Well there isn't anything here at the moment.</p>
-        <button class="foo-button mdc-button mdc-button--outlined" data-mdc-auto-init="MDCRipple" onclick="onClick()">
-            <span class="mdc-button__ripple"></span>
-            <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
-            <span id="love">Love</span>
-        </button>
+    <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust">
+        <div class="mdc-drawer__content">
+            <div class="mdc-list">
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+                    <span class="mdc-list-item__text">Inbox</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                    <span class="mdc-list-item__text">Outgoing</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                    <span class="mdc-list-item__text">Drafts</span>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+        <main class="main-content" id="main-content">
+            <p class="mdc-typography--body1">Well there isn't anything here at the moment.</p>
+            <button class="foo-button mdc-button mdc-button--outlined" data-mdc-auto-init="MDCRipple" onclick="onClick()">
+                <span class="mdc-button__ripple"></span>
+                <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+                <span id="love">Love</span>
+            </button>
+        </main>
     </div>
     <script charset="utf-8">
         mdc.autoInit();
+
+        const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+        const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+        topAppBar.setScrollTarget(document.getElementById('main-content'));
+        topAppBar.listen('MDCTopAppBar:nav', () => {
+            drawer.open = !drawer.open;
+        });
 
         function onClick() {
             if (window.localStorage.counter) window.localStorage.counter++;
@@ -45,8 +78,5 @@
         if (window.localStorage.counter) {
             document.getElementById("love").innerHTML = "Love &times;" + window.localStorage.counter;
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
