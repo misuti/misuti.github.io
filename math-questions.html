@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>口算生成器</title>
+    <meta name="author" content="Zhao Yun">
+    <meta name="description" content="生成口算题目">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        td {
+            padding: 8px;
+        }
+
+        #table td {
+            padding-right: 30px;
+        }
+
+        #ans-table td {
+            padding: 5px;
+        }
+
+
+        .grey-text {
+            color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 align="center">口算 576 道</h2>
+    <table align="center" id="table"></table>
+    <h2 align="center" style="page-break-before: always">口算 576 道：答案</h2>
+    <table align="center" id="ans-table"></table>
+    <script>
+        const table = document.getElementById("table");
+        const ansTable = document.getElementById("ans-table");
+
+        function generate() {
+            table.innerHTML = "";
+            ansTable.innerHTML = "";
+            for (let r = 0; r < 32 * 3; r++) {
+                let row = table.insertRow();
+                let arow = ansTable.insertRow();
+                for (let c = 0; c < 6; c++) {
+                    let cell = row.insertCell();
+                    let acell = arow.insertCell();
+                    let q = makeMathQ(Math.floor(r / 32));
+
+                    let text = document.createTextNode(q.question);
+                    let atext = document.createTextNode(q.question);
+                    cell.appendChild(text);
+                    acell.appendChild(atext);
+                    acell.innerHTML = '<span class="grey-text">' + q.question + '</span><span style="float: right">' + q.ans + '</span>'
+                }
+            }
+        }
+
+        function makeMathQ(type) {
+            let ans;
+            let question;
+            let tempNumber;
+            switch (type) {
+                case 0: // 千以内加法
+                    ans = Math.round(Math.random() * 900 + 100);
+                    tempNumber = Math.round(Math.random() * (ans - 100) + 100);
+                    question = (ans - tempNumber) + " + " + tempNumber + " = ";
+                    break;
+                case 1: //千以内减法
+                    tempNumber = Math.round(Math.random() * 800 + 200); // big number
+                    ans = Math.round(Math.random() * (tempNumber - 200) + 100);
+                    question = tempNumber + " - " + (tempNumber - ans) + " = ";
+                    console.log(ans, tempNumber, question);
+                    break;
+                case 2: //小九九
+                    let tempA = Math.round(Math.random() * 9 + 1);
+                    let tempB = Math.round(Math.random() * 9 + 1);
+                    ans = tempA * tempB;
+                    question = tempA + " × " + tempB + " = ";
+                    break;
+            }
+            return {
+                question: question,
+                ans: ans
+            };
+        }
+        generate();
+    </script>
+</body></html>
