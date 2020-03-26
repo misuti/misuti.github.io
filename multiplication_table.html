@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>乘法表生成器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        table {
+            border-spacing: 0px;
+            font-family: sans-serif;
+        }
+
+        td {
+            padding: auto;
+            border: .1px solid black;
+            text-align: center;
+            width: 30px;
+            height: 30px;
+        }
+
+        .shade {
+            background-color: #ddd;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="table"></table>
+    <script>
+        const table = document.getElementById("table");
+
+        function generate() {
+            table.innerHTML = "";
+            for (let a = 0; a < 21; a++) {
+                let row = table.insertRow();
+                for (let b = 0; b < 21; b++) {
+                    let cell = row.insertCell();
+                    if (a != 0 && b != 0) {
+                        let text = document.createTextNode(a * b);
+                        if (a == b) {
+                            cell.classList.add("shade");
+                        }
+                        cell.appendChild(text);
+                    } else {
+                        let text = document.createTextNode(a || b);
+                        cell.appendChild(text);
+                        cell.classList.add("shade");
+                        cell.classList.add("bold");
+                    }
+                }
+            }
+        }
+        generate();
+    </script>
+</body></html>
