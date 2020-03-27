@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yun's Homepage</title>
-    <link rel='icon' href='cloud.png' type='image/png' />
+    <link rel='icon' href='./images/cloud.png' type='image/png' />
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,11 +22,8 @@
                 <span class="mdc-top-app-bar__title">云 Yun</span>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
-                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple">
-                    <span class="mdc-button__ripple"></span>Projects
-                </button>
-                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects" data-mdc-auto-init="MDCRipple">
-                    <span class="mdc-button__ripple"></span>Random Things
+                <button class="mdc-top-app-bar__action-item mdc-button" aria-label="Projects">
+                    <span class="mdc-button__ripple"></span><a href="https://gomoku-server-zy.herokuapp.com/" class="mdc-button">Gomoku</a>
                 </button>
             </section>
         </div>
@@ -39,7 +36,7 @@
                     <span class="mdc-list-item__text">Projects</span>
                 </a>
                 <a class="mdc-list-item" href="#">
-                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">youtube_searched_for</i>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">refresh</i>
                     <span class="mdc-list-item__text">Random Things</span>
                 </a>
                 <a class="mdc-list-item" href="#">
@@ -52,12 +49,21 @@
 
     <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
         <main class="main-content" id="main-content">
-            <p class="mdc-typography--body1">Well there isn't anything here at the moment.</p>
+            <p class="mdc-typography--body1">If you want to play Gomoku, click on "
+                <a href="https://gomoku-server-zy.herokuapp.com/" class="mdc-button"><span class="mdc-button__ripple"></span>Gomoku
+                </a>
+                " in the top app bar.<br />If you want to support Gomoku, or to improve it, visit its <a target="_blank" href="https://github.com/misuti/gomoku" class="mdc-button">Github Repository <i class="material-icons" aria-hidden="true">launch</i></a></p>
             <button class="foo-button mdc-button mdc-button--outlined" data-mdc-auto-init="MDCRipple" onclick="onClick()">
                 <span class="mdc-button__ripple"></span>
                 <i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
                 <span id="love">Love</span>
             </button>
+
+            <p class="mdc-typography--body1">Other Interesting Projects</p>
+            <ul>
+                <li><a target="_blank" href="math-questions.html" class="mdc-button">速算题生成器 (Math Questions Generator for Printing)</a></li>
+                <li><a target="_blank" href="multiplication_table.html" class="mdc-button">乘法表 (Multiplication Table for Printing)</a></li>
+            </ul>
         </main>
     </div>
     <script charset="utf-8">
@@ -78,5 +84,8 @@
         if (window.localStorage.counter) {
             document.getElementById("love").innerHTML = "Love &times;" + window.localStorage.counter;
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
